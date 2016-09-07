@@ -1,0 +1,26 @@
+@font-face {
+    font-family: Astute;
+    src: url("/resources/fonts/Astute%20SSi%20Bold%20Italic.ttf");
+}
+
+.logo{
+    text-align: center;
+    font-family: Astute;
+    font-size: 20px;
+    color: #ffffff;
+}
+.logo2{
+    text-align: center;
+    font-family: Astute;
+    font-size: 20px;
+    color: #000000;
+}
+#alertWar{
+    text-align: center;
+}
+.footerDiv{
+    background-color: #000000;
+}
+.footerText{
+    color: #ffffff;
+}
