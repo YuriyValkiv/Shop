@@ -52,8 +52,8 @@ public class ShoppingCartController {
         List<ShoppingCart> cartList = shoppingCartService.getByUser(loggedUser.getName());
         Iterator<ShoppingCart> iteratorCart = cartList.iterator();
         ShoppingCart sc;
-        double total = 0;
         double price = 0;
+        double total = 0;
         while (iteratorCart.hasNext()) {
             sc = iteratorCart.next();
             price = sc.getPrice();

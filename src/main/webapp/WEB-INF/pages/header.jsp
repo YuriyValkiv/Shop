@@ -67,7 +67,7 @@
             <div class="loginmodal-container">
                 <h1>Login to Your Account</h1><br>
                 <form action="<c:url value='/j_spring_security_check' />" method="post">
-                    <input type="text" name="j_username" placeholder="Username">
+                    <input type="text" name="j_username" placeholder="Username(e-mail)">
                     <input type="password" name="j_password" placeholder="Password">
                     <input type="submit" name="login" class="login loginmodal-submit" value="Login">
                 </form>

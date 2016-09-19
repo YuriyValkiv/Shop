@@ -36,7 +36,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!-- TODO: alerts bootstrap to add button when you aren't logged user-->
                 <c:forEach var="product" items="${carts}">
                     <tr id="${product.id}">
                         <td class="col-sm-8 col-md-6">
@@ -51,7 +50,7 @@
                             <input type="number" class="form-control text-center" min="1" name="${product.price}" id="${product.id}" autocomplete="off" onchange="countSubTotalProductPrice(this)" value="1">
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>\$${product.price}</strong></td>
-                        <td id="productPrice${product.id}" class="col-sm-1 col-md-1 text-center"><strong id="priceDigit${product.id}">\$${product.price}</strong></td>
+                        <td id="productPrice${product.id}" class="col-sm-1 col-md-1 text-center"><strong>$</strong><strong id="priceDigit${product.id}">${product.price}</strong></td>
                         <td class="col-sm-1 col-md-1">
                             <button type="button" name="${product.id}" onclick="removeFromCart(this)" class="btn btn-danger">
                                 <span class="glyphicon glyphicon-remove"></span> Remove
@@ -64,7 +63,7 @@
                     <td>   </td>
                     <td>   </td>
                     <td><h5>Subtotal</h5></td>
-                    <td class="text-right" id="subtotal"><h5><strong><c:out value="${subTotal}"/></strong></h5></td>
+                    <td class="text-right"><h5 id="subtotalA"><strong id="subtotal">$<c:out value="${subTotal}"/></strong></h5></td>
                 </tr>
                 <tr>
                     <td>   </td>
@@ -78,7 +77,7 @@
                     <td>   </td>
                     <td>   </td>
                     <td><h3>Total</h3></td>
-                    <td class="text-right" id="total"><h3><strong><c:out value="${total}"/></strong></h3></td>
+                    <td class="text-right"><h3 id="totalA"><strong>$</strong><strong id="total"><c:out value="${total}"/></strong></h3></td>
                 </tr>
                 <tr>
                     <td>   </td>
