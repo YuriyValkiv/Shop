@@ -16,10 +16,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,7 +32,7 @@ public class ShoppingCartController {
     @Autowired
     ShoppingCartService shoppingCartService;
 
-    @RequestMapping(value = "shoppingCart")
+    @RequestMapping(value = "/shoppingCart")
     public String getShoppingCartPage(ModelMap modelMap) {
         Users loggedUser = new Users();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -46,25 +43,33 @@ public class ShoppingCartController {
             modelMap.put("username", user.get(0).getName());
         }
         List<ShoppingCart> shoppingCartList = shoppingCartService.getByUser(loggedUser.getName());
-        modelMap.put("carts", shoppingCartList);
+        if (!shoppingCartList.isEmpty()) {
+            modelMap.put("carts", shoppingCartList);
 
-        //counting total price for products in shopping cart
-        List<ShoppingCart> cartList = shoppingCartService.getByUser(loggedUser.getName());
-        Iterator<ShoppingCart> iteratorCart = cartList.iterator();
-        ShoppingCart sc;
-        double price = 0;
-        double total = 0;
-        while (iteratorCart.hasNext()) {
-            sc = iteratorCart.next();
-            price = sc.getPrice();
-            total += price;
+            //counting total price for products in shopping cart
+            List<ShoppingCart> cartList = shoppingCartService.getByUser(loggedUser.getName());
+            Iterator<ShoppingCart> iteratorCart = cartList.iterator();
+            ShoppingCart sc;
+            double price = 0;
+            double total = 0;
+            while (iteratorCart.hasNext()) {
+                sc = iteratorCart.next();
+                price = sc.getPrice();
+                total += price;
+            }
+            //6.94 this is estimated shipping
+            modelMap.put("subTotal", total);
+            total += 6.94;
+            modelMap.put("total", total);
+
+            return "shoppingCart";
+        }else {
+            String block = "none";
+            String message = "You don't have anything in your shopping cart";
+            modelMap.put("message", message);
+            modelMap.put("block", block);
+            return "shoppingCart";
         }
-        //6.94 this is estimated shipping
-        modelMap.put("subTotal", total);
-        total += 6.94;
-        modelMap.put("total", total);
-
-        return "shoppingCart";
     }
 
 

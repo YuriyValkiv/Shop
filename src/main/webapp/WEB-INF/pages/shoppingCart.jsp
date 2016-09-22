@@ -24,8 +24,8 @@
 
     <div class="row">
 
-
-            <table class="table table-hover">
+        <h3><strong><c:out value="${message}"/></strong></h3>
+            <table class="table table-hover" style="display: <c:out value="${block}"/>">
                 <thead>
                 <tr>
                     <th>Product</th>

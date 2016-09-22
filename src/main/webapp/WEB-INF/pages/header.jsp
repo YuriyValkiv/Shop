@@ -79,15 +79,18 @@
     <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="main-login main-center">
-                <form class="form-horizontal" method="post" action="/registration">
+                <form class="form-horizontal" method="post" action="/registration" novalidate>
 
                     <div class="form-group">
                         <label for="name" class="cols-sm-2 control-label">Your Name</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+                                <input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" onblur="validateLogin(2,25,this)"/>
                             </div>
+                            <div id="validateLoginResult"></div>
+                            <span class="reg_rules" id="validateLoginRules">Only symbols: {A-z, 0-9, _}. From 2 to 25 symbols</span>
+                            <div class="ghost"></div>
                         </div>
                     </div>
 
@@ -96,8 +99,11 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+                                <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email" onblur="validateEmail(this)"/>
                             </div>
+                            <div id="validateEmailResult"></div>
+                            <span class="reg_rules" id="validateEmailRules">Only correct email with symbol {@}</span>
+                            <div class="ghost"></div>
                         </div>
                     </div>
 
@@ -106,8 +112,11 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="country" id="country"  placeholder="Enter your Country"/>
+                                <input type="text" class="form-control" name="country" id="country"  placeholder="Enter your Country" onblur="validateCountry(this)"/>
                             </div>
+                            <div id="validateCountryResult"></div>
+                            <span class="reg_rules" id="validateCountryRules">Only symbols: {A-z}</span>
+                            <div class="ghost"></div>
                         </div>
                     </div>
 
@@ -116,8 +125,11 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="city" id="city"  placeholder="Enter your City"/>
+                                <input type="text" class="form-control" name="city" id="city"  placeholder="Enter your City" onblur="validateCity(this)"/>
                             </div>
+                            <div id="validateCityResult"></div><br>
+                            <span class="reg_rules" id="validateCityRules">Only symbols: {A-z}</span>
+                            <div class="ghost"></div>
                         </div>
                     </div>
 
@@ -126,8 +138,11 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+                                <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" onblur="validatePassword(this)"/>
                             </div>
+                            <div id="validatePasswordResult"></div><br>
+                            <span class="reg_rules" id="validatePasswordRules">At least one:[A-z,0-9,special symbol].Min 8 symbols</span>
+                            <div class="ghost"></div>
                         </div>
                     </div>
 
@@ -136,13 +151,16 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+                                <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" onblur="validatePasswordConfirmation(document.getElementById('password'), this)"/>
                             </div>
+                            <div id="validatePasswordConfResult"></div>
+                            <span class="reg_rules" id="validatePasswordConfRules">Confirm your password from upper field.</span>
+                            <div class="ghost"></div>
                         </div>
                     </div>
 
                     <div class="form-group ">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button" onclick="return validateForm(this.form);">Register</button>
                     </div>
                 </form>
             </div>
@@ -154,6 +172,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/resources/js/bootstrap.min.js"></script>
+
+    <script src="/resources/js/formValidator.js"></script>
 
 </body>
 
