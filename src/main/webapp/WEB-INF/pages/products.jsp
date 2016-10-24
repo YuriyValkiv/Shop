@@ -119,8 +119,6 @@
 
     <div class="container">
 
-        <hr>
-
         <!-- Footer -->
         <jsp:include page="footer.jsp"/>
 

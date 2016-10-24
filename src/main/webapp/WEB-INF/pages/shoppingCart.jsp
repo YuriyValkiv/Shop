@@ -22,7 +22,7 @@
 
 <div class="container">
 
-    <div class="row">
+    <div class="row cartTable">
 
         <h3><strong><c:out value="${message}"/></strong></h3>
             <table class="table table-hover" style="display: <c:out value="${block}"/>">

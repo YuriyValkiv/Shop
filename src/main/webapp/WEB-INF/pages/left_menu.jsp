@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="col-md-3">
-        <p class="lead">Categories:</p>
+        <p class="lead" style="color: white">Categories:</p>
         <div class="list-group">
             <a href="/products" class="list-group-item <c:out value="${activeListItemOne}"/>">Smartphones</a>
             <a href="/products/?type=notebook" class="list-group-item <c:out value="${activeListItemTwo}"/>">Laptops</a>
