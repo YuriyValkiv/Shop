@@ -2,10 +2,10 @@
 -- version 4.4.15.5
 -- http://www.phpmyadmin.net
 --
--- Хост: 127.0.0.1
--- Час створення: Сер 25 2016 р., 12:56
--- Версія сервера: 5.6.30
--- Версія PHP: 5.5.35
+-- Host: 127.0.0.1
+-- Generation Time: Oct 25, 2016 at 02:00 PM
+-- Server version: 5.6.30
+-- PHP Version: 5.5.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,35 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База даних: `myshop`
+-- Database: `myshop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблиці `Lot`
+-- Table structure for table `Comments`
+--
+
+CREATE TABLE IF NOT EXISTS `Comments` (
+  `comments_id` bigint(20) NOT NULL,
+  `comments_author` varchar(60) NOT NULL,
+  `comments_date` varchar(60) NOT NULL,
+  `comments_comment` text NOT NULL,
+  `lot_name` varchar(100) NOT NULL,
+  `comments_stars` tinyint(4) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Comments`
+--
+
+INSERT INTO `Comments` (`comments_id`, `comments_author`, `comments_date`, `comments_comment`, `lot_name`, `comments_stars`) VALUES
+(1, 'Anonymous', '10/25/2016 14:17:10', 'I bought it yesterday', 'Samsung Galaxy S6', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Lot`
 --
 
 CREATE TABLE IF NOT EXISTS `Lot` (
@@ -36,10 +58,10 @@ CREATE TABLE IF NOT EXISTS `Lot` (
   `lot_imageBig` varchar(100) NOT NULL,
   `lot_description` text NOT NULL,
   `lot_descriptionBig` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
--- Дамп даних таблиці `Lot`
+-- Dumping data for table `Lot`
 --
 
 INSERT INTO `Lot` (`lot_id`, `lot_name`, `lot_type`, `lot_price`, `lot_country`, `lot_image`, `lot_imageBig`, `lot_description`, `lot_descriptionBig`) VALUES
@@ -56,7 +78,7 @@ INSERT INTO `Lot` (`lot_id`, `lot_name`, `lot_type`, `lot_price`, `lot_country`,
 -- --------------------------------------------------------
 
 --
--- Структура таблиці `ShoppingCart`
+-- Table structure for table `ShoppingCart`
 --
 
 CREATE TABLE IF NOT EXISTS `ShoppingCart` (
@@ -65,19 +87,21 @@ CREATE TABLE IF NOT EXISTS `ShoppingCart` (
   `cart_price` double NOT NULL,
   `cart_image` varchar(100) NOT NULL,
   `cart_user` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 --
--- Дамп даних таблиці `ShoppingCart`
+-- Dumping data for table `ShoppingCart`
 --
 
 INSERT INTO `ShoppingCart` (`cart_id`, `cart_name`, `cart_price`, `cart_image`, `cart_user`) VALUES
-(4, 'Samsung Galaxy S7', 199.99, '/resources/images/phones/galaxy7.jpg', 'Yuriy');
+(26, 'Samsung Galaxy S6', 127, '/resources/images/phones/galaxy6.jpg', 'Yuriy'),
+(27, 'Samsung Galaxy S7', 199.99, '/resources/images/phones/galaxy7.jpg', 'Yuriy'),
+(29, 'iPhone 5', 112.39, '/resources/images/phones/iphone5.jpg', 'Yuriy');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблиці `Users`
+-- Table structure for table `Users`
 --
 
 CREATE TABLE IF NOT EXISTS `Users` (
@@ -92,50 +116,61 @@ CREATE TABLE IF NOT EXISTS `Users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Дамп даних таблиці `Users`
+-- Dumping data for table `Users`
 --
 
 INSERT INTO `Users` (`users_id`, `users_name`, `users_email`, `users_country`, `users_city`, `users_password`, `users_role`, `enabled`) VALUES
 (1, 'Yuriy', 'yura@gmail.com', 'Ukraine', 'i', 'bc759e17ff6499e8537e1f34eac176f5', 'ROLE_ADMIN', 1);
 
 --
--- Індекси збережених таблиць
+-- Indexes for dumped tables
 --
 
 --
--- Індекси таблиці `Lot`
+-- Indexes for table `Comments`
+--
+ALTER TABLE `Comments`
+  ADD PRIMARY KEY (`comments_id`);
+
+--
+-- Indexes for table `Lot`
 --
 ALTER TABLE `Lot`
   ADD PRIMARY KEY (`lot_id`);
 
 --
--- Індекси таблиці `ShoppingCart`
+-- Indexes for table `ShoppingCart`
 --
 ALTER TABLE `ShoppingCart`
   ADD PRIMARY KEY (`cart_id`);
 
 --
--- Індекси таблиці `Users`
+-- Indexes for table `Users`
 --
 ALTER TABLE `Users`
   ADD PRIMARY KEY (`users_id`);
 
 --
--- AUTO_INCREMENT для збережених таблиць
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблиці `Lot`
+-- AUTO_INCREMENT for table `Comments`
+--
+ALTER TABLE `Comments`
+  MODIFY `comments_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `Lot`
 --
 ALTER TABLE `Lot`
-  MODIFY `lot_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `lot_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT для таблиці `ShoppingCart`
+-- AUTO_INCREMENT for table `ShoppingCart`
 --
 ALTER TABLE `ShoppingCart`
-  MODIFY `cart_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `cart_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
--- AUTO_INCREMENT для таблиці `Users`
+-- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
   MODIFY `users_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
