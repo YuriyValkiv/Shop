@@ -28,12 +28,12 @@ public class Comments {
 
     public Comments() {}
 
-    public Comments(String author, String date, String comment, String lot_name) {
+    public Comments(String author, String date, String comment, String lot_name, byte stars) {
         this.author = author;
         this.date = date;
         this.comment = comment;
         this.lot_name = lot_name;
-        //this.stars = stars;
+        this.stars = stars;
     }
 
     public void setId(long id) {

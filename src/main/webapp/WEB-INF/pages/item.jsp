@@ -65,11 +65,11 @@
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Comment:</h4>
-                    <form role="form" action="/newComment">
+                    <form role="form">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3" name="comment"></textarea>
+                            <textarea class="form-control" rows="3" name="comment" id="comment"></textarea>
                         </div>
-                        <input type="hidden" name="product" value="<c:out value="${lotName}"/>">
+                        <input type="hidden" name="product" id="product" value="<c:out value="${lotName}"/>">
                         <div class="form-group">
                             <span class="starRating">
                                 <input id="rating5" type="radio" name="rating" value="5">
@@ -84,64 +84,64 @@
                                 <label for="rating1">1</label>
                             </span>
                         </div>
-                        <button type="submit" class="btn btn-primary">Leave a Comment</button>
+
                     </form>
+                    <button class="btn btn-primary" onclick="leaveAComment()">Leave a Comment</button>
                 </div>
 
-                <div class="well">
+                <div class="well" id="commentsBlock">
+                    <div id="comm">
 
-                    <div class="text-right">
-                        <a class="btn btn-success" href="/products">Leave a Review</a>
-                    </div>
-
-                    <c:forEach var="comments" items="${commentsList}">
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                                ${comments.author}
-                                <span class="pull-right">${comments.date}</span>
-                                <p>${comments.comment}</p>
-                            </div>
+                        <div class="text-right">
+                            <a class="btn btn-success" href="/products">Leave a Review</a>
                         </div>
-                    </c:forEach>
 
+                        <c:forEach var="comments" items="${commentsList}">
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <c:choose>
+                                        <c:when test="${comments.stars == 1}">
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                        </c:when>
+                                        <c:when test="${comments.stars == 2}">
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                        </c:when>
+                                        <c:when test="${comments.stars == 3}">
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                        </c:when>
+                                        <c:when test="${comments.stars == 4}">
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                        </c:when>
+                                        <c:when test="${comments.stars == 5}">
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                        </c:when>
+                                    </c:choose>
+                                    ${comments.author}
+                                    <span class="pull-right">${comments.date}</span>
+                                    <p>${comments.comment}</p>
+                                </div>
+                            </div>
+                        </c:forEach>
 
-
-                    <%--<div class="row">--%>
-                        <%--<div class="col-md-12">--%>
-                            <%--<span class="glyphicon glyphicon-star"></span>--%>
-                            <%--<span class="glyphicon glyphicon-star"></span>--%>
-                            <%--<span class="glyphicon glyphicon-star"></span>--%>
-                            <%--<span class="glyphicon glyphicon-star"></span>--%>
-                            <%--<span class="glyphicon glyphicon-star-empty"></span>--%>
-                            <%--Anonymous--%>
-                            <%--<span class="pull-right">12 days ago</span>--%>
-                            <%--<p>I've alredy ordered another one!</p>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-
-                    <%--<hr>--%>
-
-                    <%--<div class="row">--%>
-                        <%--<div class="col-md-12">--%>
-                            <%--<span class="glyphicon glyphicon-star"></span>--%>
-                            <%--<span class="glyphicon glyphicon-star"></span>--%>
-                            <%--<span class="glyphicon glyphicon-star"></span>--%>
-                            <%--<span class="glyphicon glyphicon-star"></span>--%>
-                            <%--<span class="glyphicon glyphicon-star-empty"></span>--%>
-                            <%--Anonymous--%>
-                            <%--<span class="pull-right">15 days ago</span>--%>
-                            <%--<p>I've seen some better than this, but not at this price. I definitely recommend this item.</p>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-
+                    </div>
                 </div>
-
             </div>
 
         </div>
@@ -152,6 +152,8 @@
 
     <!-- jQuery -->
     <script src="/resources/js/jquery.js"></script>
+
+    <script src="/resources/js/script.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/resources/js/bootstrap.min.js"></script>

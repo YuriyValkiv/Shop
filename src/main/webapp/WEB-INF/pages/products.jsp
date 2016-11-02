@@ -83,7 +83,7 @@
                             <div class="thumbnail">
                                 <img src="${product.image}" alt="">
                                 <div class="caption">
-                                    <h4 class="pull-right">${product.price}</h4>
+                                    <h4 class="pull-right">$${product.price}</h4>
                                     <h4><a href="/item?name=${product.name}">${product.name}</a>
                                     </h4>
                                     <p>${product.description}</p>

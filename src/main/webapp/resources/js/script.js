@@ -47,3 +47,25 @@ function countSubTotalProductPrice(element) {
     $('#priceDigit' + productId).remove();
     $('#productPrice' + productId).html('<strong>$</strong><strong id="priceDigit'+productId+'">'+total+'</strong>');
 }
+
+var comments = {};
+function leaveAComment() {
+    comments.product = $('#product').val();
+    comments.comment = $('#comment').val();
+    if ($('#rating1').prop('checked')) comments.stars = $('#rating1').val();
+    if ($('#rating2').prop('checked')) comments.stars = $('#rating2').val();
+    if ($('#rating3').prop('checked')) comments.stars = $('#rating3').val();
+    if ($('#rating4').prop('checked')) comments.stars = $('#rating4').val();
+    if ($('#rating5').prop('checked')) comments.stars = $('#rating5').val();
+
+    $.ajax({
+        url: "/newComment",
+        type: "GET",
+        data: comments,
+        dataType: "html",
+
+        success: function (data) {
+            $('#comm').append(data);
+        }
+    })
+}
