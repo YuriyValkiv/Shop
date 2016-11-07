@@ -37,8 +37,6 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/products">Products</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
                     <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
                         <li><a href="#"><c:out value="${username}"/></a></li>
                     </sec:authorize>

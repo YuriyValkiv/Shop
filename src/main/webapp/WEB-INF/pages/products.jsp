@@ -88,16 +88,7 @@
                                     </h4>
                                     <p>${product.description}</p>
                                 </div>
-                                <div class="ratings">
-                                    <p class="pull-right">15 reviews</p>
-                                    <p>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </p>
-                                </div>
+                                <br>
                                 <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
                                     <a tabindex="0" id="popOver" name="${product.name}" onclick="addToCart(this)" class="btn btn-success" role="button" data-toggle="popover" data-trigger="focus" data-content="Added">Add to cart</a>
                                 </sec:authorize>

@@ -12,17 +12,16 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -61,6 +60,24 @@ public class ItemController {
         //number of reviews for current product
         int reviews = commentsList.size();
         modelMap.put("reviews", reviews);
+
+        /*
+         * average star rating
+         */
+        int rating = 0;
+        int numberOfComments = commentsList.size();
+        Iterator<Comments> commentsIterator = commentsList.iterator();
+        while (commentsIterator.hasNext()) {
+            rating += commentsIterator.next().getStars();
+        }
+        System.out.println(numberOfComments);
+        System.out.println(rating);
+        int resultRating = rating/numberOfComments;
+        byte resRat = (byte) resultRating;
+        String itemStarRating = getStarsRating(resRat);
+        modelMap.put("itemStarRating", itemStarRating);
+        modelMap.put("itemRating", resultRating);
+        modelMap.put("numberOfComments", numberOfComments);
         return "item";
     }
 

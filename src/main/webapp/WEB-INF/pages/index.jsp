@@ -18,7 +18,7 @@
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/resources/css/full.css" rel="stylesheet">
+    <link href="/resources/css/stylish-portfolio.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,6 +33,15 @@
 
     <!-- Navigation -->
     <jsp:include page="header.jsp"/>
+
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1>Start Shopping</h1>
+            <%--<h3>With MyShop</h3>--%>
+            <br>
+            <a href="/products" class="btn btn-dark btn-lg">Start it now</a>
+        </div>
+    </header>
 
 
     <!-- jQuery -->

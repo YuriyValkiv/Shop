@@ -49,14 +49,10 @@
                             <p>${product.descriptionBig}</p>
                         </div>
                         <div class="ratings">
-                            <p class="pull-right">3 reviews</p>
+                            <p class="pull-right"><c:out value="${numberOfComments}"/> comments</p>
                             <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                                4.0 stars
+                                <c:out value="${itemStarRating}" escapeXml="false"/>
+                                <c:out value="${itemRating}"/> stars
                             </p>
                         </div>
                     </div>
