@@ -72,7 +72,12 @@ public class ItemController {
         }
         System.out.println(numberOfComments);
         System.out.println(rating);
-        int resultRating = rating/numberOfComments;
+        int resultRating = 0;
+        try {
+            resultRating = rating/numberOfComments;
+        } catch (ArithmeticException e) {
+            resultRating = 0;
+        }
         byte resRat = (byte) resultRating;
         String itemStarRating = getStarsRating(resRat);
         modelMap.put("itemStarRating", itemStarRating);
@@ -153,6 +158,13 @@ public class ItemController {
                         "<span class=\"glyphicon glyphicon-star\"></span>" +
                         "<span class=\"glyphicon glyphicon-star\"></span>" +
                         "<span class=\"glyphicon glyphicon-star\"></span>";
+                break;
+            default:
+                starsToPage = "<span class=\"glyphicon glyphicon-star-empty\"></span>" +
+                        "<span class=\"glyphicon glyphicon-star-empty\"></span>" +
+                        "<span class=\"glyphicon glyphicon-star-empty\"></span>" +
+                        "<span class=\"glyphicon glyphicon-star-empty\"></span>" +
+                        "<span class=\"glyphicon glyphicon-star-empty\"></span>";
                 break;
         }
     return starsToPage;

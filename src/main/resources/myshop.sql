@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2016 at 02:00 PM
+-- Generation Time: Nov 09, 2016 at 03:10 PM
 -- Server version: 5.6.30
 -- PHP Version: 5.5.35
 
@@ -33,14 +33,14 @@ CREATE TABLE IF NOT EXISTS `Comments` (
   `comments_comment` text NOT NULL,
   `lot_name` varchar(100) NOT NULL,
   `comments_stars` tinyint(4) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Comments`
 --
 
 INSERT INTO `Comments` (`comments_id`, `comments_author`, `comments_date`, `comments_comment`, `lot_name`, `comments_stars`) VALUES
-(1, 'Anonymous', '10/25/2016 14:17:10', 'I bought it yesterday', 'Samsung Galaxy S6', 0);
+(1, 'Anonymous', '10/25/2016 14:17:10', 'I bought it yesterday', 'Samsung Galaxy S6', 5);
 
 -- --------------------------------------------------------
 
@@ -158,7 +158,7 @@ ALTER TABLE `Users`
 -- AUTO_INCREMENT for table `Comments`
 --
 ALTER TABLE `Comments`
-  MODIFY `comments_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `comments_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `Lot`
 --
