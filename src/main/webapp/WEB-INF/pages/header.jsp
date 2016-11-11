@@ -48,7 +48,7 @@
                     </sec:authorize>
                     <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
                         <span class="username"><c:out value="${username}"/></span>
-                        <a href="/j_spring_security_logout"><button type="button" class="btn btn-default">Logout</button></a>
+                        <a href="/logout"><button type="button" class="btn btn-default">Logout</button></a>
                         <a href="/shoppingCart" class="btn btn-info">
                             <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
                         </a>
